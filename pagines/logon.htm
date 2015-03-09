@@ -1,0 +1,61 @@
+
+<h2>Sub pagina de LOGON servida per el server</h2>
+
+<hr>
+
+<table class="tlogon">
+<tr> <td>
+<h3> Do Logon() </h3>
+<p>
+Entra el teu usuari i la clau de pas, i prem el boto "Do Logon".
+</p>
+<td>
+
+<form id="myFormReqLogon">
+<table class="tlog_dyb"> <tr> <td>
+	<label for="nomLogon">Nom de usuari &nbsp; </label>
+	<input type="text" autofocus value="Ivan" name="nom_Logon" /> 
+	<br>
+	<label for="nomLogon">Clau de pas &nbsp; &nbsp;</label>
+	<input type="password"  value="Grozniy" name="pwd_Logon" /> 
+<td>
+	<p> &nbsp;
+	<input type="submit" value=" Do Logon ">
+</table>
+</form>
+
+</table>
+
+<hr>
+
+<script> 
+$(document).ready( function() {
+	
+	$( "#myFormReqLogon" ).submit( function(event) {
+		
+		var myLogon = $( this ).serialize() ;  // get user entry and display it
+		
+		console.log( '[+] boto LOGON polsat - logon ('+myLogon+').' ) ; // logon(nom_Logon=Ivan&pwd_Logon=Grozniy).
+		var i = myLogon.indexOf("&") ;
+//		console.log( '[+] boto polsat - AMP at ('+i+').' ) ;
+		var logonUser = myLogon.substring( 10, i ) ;
+		console.log( '[+] boto LOGON polsat - USR is ('+logonUser+').' ) ;
+		var j = myLogon.length ;
+//		console.log( '[+] boto polsat - PAR at ('+j+').' ) ;
+		var logonPwd = myLogon.substring( i+11, j ) ;
+		console.log( '[+] boto LOGON polsat - PWD is ('+logonPwd+').' ) ;
+
+		window.session.user.nom = logonUser ;
+		$( "#watermark" ).html( '<p>Ara soc en {'+logonUser+ '} | Logoff' ) ; // show received HTML at specific <div>
+
+		$.post( '/logonuser/'+myLogon, function( page ) {
+			console.log( '**** Demanem al server de fer LOGON() de un usuari.' ) ;
+			$( "#content" ).html( page ) ; // show received HTML at specific <div>
+		}) ; // post(logon)
+		
+		return false ; // stop processing !!!
+	
+	}); // click "myFormReqLogon" submit
+	
+} ) ; // LOGON.HTM DOM ready
+</script>

@@ -1,0 +1,218 @@
+/* CSS
+   template webtom grey by tom.cryns@webtom.be
+*/
+
+body {
+  font-family: "Trebuchet MS", Verdana, geneva, sans-serif;
+  font-size:small;
+  background:#ccc;
+  margin:0;
+  padding:0;
+}
+
+* {
+	margin:0;
+	padding:0;
+	line-height:1.5em;
+}
+
+h1 {
+  padding:0;
+  margin:10px 0px;
+  font-family: "Trebuchet MS", Verdana, Sans-Serif;
+  font-size:180%;
+  font-weight:normal;
+}
+
+h2 {
+  padding:0;
+  margin:20px 0px 0 0;
+  font-family: "Trebuchet MS", Verdana, Sans-Serif;
+  font-size:140%;
+  font-weight:normal;
+}
+
+/* width (-200) also used in "content" {sag, -250} */
+#container {
+  width:1200px;
+  margin:10px auto;
+  padding:10px;
+  background:#fff;
+  font-size:100%;
+}
+
+#watermark {
+  height:20px;
+  margin:0px;
+  padding:5px 20px;
+  color:#fff;
+  font-size:85%;
+  text-align:right;
+  background:#333 url(../img/tlcorner.gif) top left no-repeat;
+}
+
+#header {
+  height:80px;
+  margin:0;
+  padding:30px 20px;
+  background:#666  url(../img/headerbg.gif) bottom right no-repeat;
+  color:#fff;
+  font-size:95%;
+  text-align:left;
+  clear:both;
+}
+
+#header h1{
+  margin:0;
+  padding:0 20px;
+  font-size:200%;
+}
+
+/* height also used in "content" */
+#sidebar
+{
+  float:left;
+  width:200px;
+  height:400px;
+  margin:5px 0px 5px 0px;
+  padding:10px;
+  color:#fff;
+  background:#606060; // ex #666
+}
+
+/* width (+200) also used in "container" {sag, +250} */
+/* height also used in "sidebar" */
+#content {
+  width:950px;
+  height:400px;
+  margin:5px 0px 5px 0px;
+  padding:10px;
+  float:right;
+  background:#ccc;
+}
+
+#content ol,
+#content ul
+{
+  padding:5px 20px;
+}
+
+#sidebar p, #content p{
+  padding:3px 0px;
+}
+
+#sidebar a, 
+#content a
+{
+  color:#555;
+  text-decoration:underline;
+}
+
+#content a img
+{
+  text-decoration:none;
+  border:0;
+}
+
+#ads {
+  height:50px;
+  margin:0;
+  padding:0 20px;
+  background:#ddd;
+  color:#555;
+  font-size:95%;
+  text-align:right;
+  clear:both;
+}
+
+
+#footer {
+  clear:both;
+  padding: 5px 10px;
+  background:#333 url(../img/brcorner.gif) bottom right no-repeat;
+  color:#fff;
+  font-family: Verdana, sans-serif;
+  font-size:85%;
+  text-align:left;
+}
+
+#footer a
+{
+ color:#fff;
+}
+
+
+#nav {
+  float:left;
+  width:100%;
+  margin:0;
+  padding:10px 0px;
+  font-family: "Trebuchet MS", Verdana, Sans-Serif;
+  font-size:100%;
+  background:#777;
+  color: #333;
+}
+
+#nav li {
+	font-size:1.0em;
+	list-style:none;
+	display:inline;
+	padding:5px 2px;
+}
+
+#nav li a {
+  margin:0px 0px;
+  padding:7px;
+  color:#ddd;
+  text-decoration:none;
+  font-weight: bold;
+}
+
+#nav li a:hover {
+  bbackground:#555;
+  background: yellow ;
+  color:#fff; 
+}
+
+
+#home #homenav,
+#links #linksnav,
+#contact #contactnav,
+#reserves #reservesnav
+{
+  color:#fff;
+  background:#555; 
+  bbackground: blue ; 
+}
+
+
+ul { margin: 0; padding : 0; list-style : none; }
+
+
+#sidebarnav {
+  margin:0;
+  padding:0;
+  color: #fff;
+}
+
+#sidebarnav ul {
+  padding:4px;
+  list-style:none;
+}
+
+#sidebarnav li {
+  margin:4px 0;
+  list-style:none;
+}
+
+#sidebarnav li a {
+  color:#eee;
+  text-decoration:underline;
+  display:block;
+}
+
+#sidebarnav li a:hover {
+  bbackground:#999;
+  background: green ;
+}
+

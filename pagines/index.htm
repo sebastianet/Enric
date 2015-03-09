@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+ <link rel="stylesheet" type="text/css" href="css/enric.css" />
+ <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+ 
+ <title> INDEX.HTM Enric </title>
+ 
+</head>
+
+<body>
+
+<div id="container">
+
+    <div id="watermark">
+        &nbsp;    
+    </div>
+    
+    
+    <div id="sidebar">
+
+		<h2>Comandes</h2>
+	  
+		<p><a href="#" class="clkLogon"> Logon </a>
+
+		<hr>
+		<p>	  
+		
+		<div id="my_month">
+			&nbsp;    
+		</div>
+
+		<div id="my_date">
+			&nbsp;    
+		</div>
+
+	</div>
+
+	<div id="content">
+        &nbsp;    
+	</div>
+    
+</div>
+
+<script> 
+
+$( function() {  // INDEX.HTM DOM ready event
+	
+// $(document).ready( function() {
+
+	window.session = {} ;             // unique global var for all the application !
+	
+	window.session.user = {} ;        // set "no user" at begin
+
+	$( ".clkLogon" ).click( function() {
+		console.log( '*** index - has picat al link de LOGON.' ) ;
+		$.get( '/logon.htm', function( page ) {
+			console.log( '*** index - demanem al server la sub-pagina LOGON.' ) ;
+			$( "#content" ).html( page ) ; // show received HTML at specific <div>
+		}) ; // get(logon)
+	}) ; // logon
+	
+} ) ; // DOM ready
+
+</script>
+</body>
+</html>
+   

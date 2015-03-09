@@ -1,0 +1,45 @@
+.
+No em tiris a la paperera…
+
+M’agradaría que quan puguis i si pots i si tens confiança amb els teus colegas els hi mostresis aquest codi 
+per crear objectes amb propietats privades.
+
+Aquesta funció constructora es de la meva fornada i no la he vist de moment a cap llibre….
+
+La sorpresa es que la he montat per instint i olfat i “eureka”,  funciona….
+
+Crec que ja entenc perqué funciona, però m’agradaría que algú fes d’advocat del diable per si estic fent tonteries…
+
+Si fos correcta la utilitzaría com a model perque m'agrada i crec que es eficient i explica molts conceptes i com funciona el javascript...
+
+Aquí tens el codi:
+
+
+_____________________________________________________________________________
+
+
+function CrearObjetoConPropiedadesPrivadas (nouNom) {
+
+var nom = nouNom;   // al posar var, la variable es privada de la funció
+
+
+function Crear(nouNom) {} 
+	Crear.prototype.getNom = function() { return nom; };
+	Crear.prototype.setNom = function(nouNom) {  nom = nouNom; };
+	return new Crear(nouNom); 
+}
+
+var enric = CrearObjetoConPropiedadesPrivadas("enric”)          // crear objecte enric
+console.log("el nom del objecte enric es:" + enric.getNom()); 
+enric.setNom(“EnriModificat”)                                   //modificar la propietat nom del objete enric
+console.log("el nom del objecte enric es:" + enric.getNom());   // EnricModificat
+
+var sebastia = CrearObjetoConPropiedadesPrivadas(“sebastia”)
+console.log("el nom del objecte sebastia es:" + sebastia.getNom()); 
+enric.setNom(“SebastiaModificat”)
+console.log("el nom del objecte sebastia es:" + sebastia.getNom());  // SebastiaModificat
+______________________________________________________________________________
+
+Gracies per la teva tolerancia i paciencia. Que tinguis un bon cap de setmana :)
+Enric
+.

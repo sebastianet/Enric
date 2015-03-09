@@ -1,0 +1,50 @@
+	console.log( ">>> POST un LOGON(). Nom (%s), pwd (%s).", Logon_NomSoci, Logon_PwdUser ) ;
+	
+	var CollectionName = app.get( 'userscolname' ) ;     // get collection name
+	var MyUsersCollection = db.get( CollectionName ) ;   // get the collection
+	console.log( ">>> Using USERS ddbb (" + MyUsersCollection.name + ")." ) ;
+
+	MyUsersCollection.find( { uAlias: Logon_NomSoci }, { limit: 20 }, function( err, docs ){ 
+	
+		var  i = docs.length ;
+		console.log( "+++ the collection (%s) for the user (%s) has (%s) elements.", CollectionName, Logon_NomSoci, i ) ;
+
+		if ( err ) {
+			console.log( '--- Logon MongoDB error. Error is (%s)', err.message ) ;
+			res.status( 500 ) ; // internal error
+			res.send( {'error':'mongodb error has occurred'} ) ;
+		} else { // no ERR
+			if ( docs ) {
+				if ( i > 0 ) {
+					console.log( '+++ user found. Lets see its PWD.' ) ;
+					var ObjectId_User_at_bbdd = docs[0]._id ;
+					var Logon_Pwd_From_bbdd   = docs[0].uPwd ;
+					console.log( 'PWD - bbdd [' + Logon_Pwd_From_bbdd + '], user [' + Logon_PwdUser + '].' ) ;
+					
+					if ( Logon_PwdUser == Logon_Pwd_From_bbdd ) {
+						
+						req.session.nomsoci = Logon_NomSoci ; // guardar nom soci en la sessio
+						var mSg = new Date() ;                      // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/now : time in milliseconds
+						req.session.lastlogon = mSg.toISOString() ; 
+						
+						res.status( 200 ) ; // OK
+						var szMsg_Logon_OK = "+++ logon and PWD OK. Last logon {"+ req.session.lastlogon + "}. "
+						res.send( szMsg_Logon_OK ) ; 
+					} else {
+						console.log( '--- PWD not right.' ) ;
+						res.send( 401,'user ('+ Logon_NomSoci + ') incorrect password ('+Logon_PwdUser+').' ) ;
+					} ; // both passwords are the same ?
+
+				} else {
+					console.log( '--- USER NOT FOUND.' ) ;
+					res.send( 401,'user ('+ Logon_NomSoci + ') not found.' ) ;
+				} ;
+			} else {
+				console.log( '--- no DOCS returned.' ) ;
+				res.status( 404 ) ; // 404 ?
+				res.send( "--- no DOCS." ) ; 
+			} ; // if Docs
+		} ; // if Error
+
+	}) ; // find()
+	

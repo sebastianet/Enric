@@ -1,0 +1,41 @@
+/*
+   CSS ENRIC
+*/
+
+#container {
+  width:1200px;
+  margin:10px auto;
+  padding:10px;
+  background:#fff;
+  font-size:100%;
+}
+
+#watermark {
+  height:20px;
+  margin:0px;
+  padding:5px 20px;
+  color:#fff;
+  font-size:85%;
+  text-align:right;
+  background:#333;
+}
+
+#sidebar
+{
+  float:left;
+  width:200px;
+  height:400px;
+  margin:5px 0px 5px 0px;
+  padding:10px;
+  color:#fff;
+  background:#606060;
+}
+
+#content {
+  width:950px;
+  height:400px;
+  margin:5px 0px 5px 0px;
+  padding:10px;
+  float:right;
+  background:#ccc;
+}
